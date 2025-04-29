@@ -23,7 +23,7 @@ if (toastTrigger) {
 
 function randpok() {
     const randomId = Math.floor(Math.random() * 898);
-    const apiUrl = `https://pokeapi.co/api/v2/pokemon/${randomId}`
+    const apiUrl = `https://pokeapi.co/api/v2/pokemon/${randomId}`;
     fetch(apiUrl)
         .then(response => response.json())
         .then(data => {
@@ -32,9 +32,9 @@ function randpok() {
         })
         .catch(error => console.error(error));
 }
-window.onload = () => {
+window.onload = async () => {
     const nidoapi = `https://pokeapi.co/api/v2/pokemon/nidoking`;
-    fetch(nidoapi)
+    await fetch(nidoapi)
         .then(response => response.json())
         .then(data => {
             const pokemonName = data.name;
@@ -44,7 +44,21 @@ window.onload = () => {
         .catch(error => console.error(error));
 };
 
+async function getpok() {
+    let inp = document.getElementById("pin").value;
+    const apicall = `https://pokeapi.co/api/v2/pokemon/${inp}`;
+    fetch(apicall)
+        .then(response => response.json())
+        .then(data => {
+            const pokemonName = data.name;
+            document.getElementById("resultp").innerHTML = pokemonName;
+        })
+        .catch(error => console.error(error));
+}
 
+
+
+document.getElementById("submitp").addEventListener("click", getpok());
 document.getElementById("apip").addEventListener("click", randpok);
 document.getElementById("mutateb").addEventListener("click", function () {
     document.getElementById("textb").innerHTML = "Working, Please Wait";

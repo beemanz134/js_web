@@ -22,6 +22,11 @@ if (toastTrigger) {
 }
 
 
-
+document.getElementById("mutateb").addEventListener("click", function () {
+    document.getElementById("textb").innerHTML = "Working, Please Wait";
+    setTimeout(function () {
+        document.getElementById("textb").innerHTML = "waiting";
+    }, 5000);
+});
 document.getElementById("alert").addEventListener("click", alertList);
 document.getElementById("submit").addEventListener("click", formSubmit);

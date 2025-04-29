@@ -32,6 +32,17 @@ function randpok() {
         })
         .catch(error => console.error(error));
 }
+window.onload = () => {
+    const nidoapi = `https://pokeapi.co/api/v2/pokemon/nidoking`;
+    fetch(nidoapi)
+        .then(response => response.json())
+        .then(data => {
+            const pokemonName = data.name;
+            const pokemonAbilities = data.abilities.map(a => a.ability.name).join(", ");
+            document.getElementById("nidoking").innerHTML = pokemonName + " " + pokemonAbilities;
+        })
+        .catch(error => console.error(error));
+};
 
 
 document.getElementById("apip").addEventListener("click", randpok);

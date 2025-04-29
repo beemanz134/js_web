@@ -21,7 +21,20 @@ if (toastTrigger) {
     })
 }
 
+function randpok() {
+    const randomId = Math.floor(Math.random() * 898);
+    const apiUrl = `https://pokeapi.co/api/v2/pokemon/${randomId}`
+    fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+            const pokemonName = data.name;
+            alert(`Pokemon Name: ${pokemonName}`);
+        })
+        .catch(error => console.error(error));
+}
 
+
+document.getElementById("apip").addEventListener("click", randpok);
 document.getElementById("mutateb").addEventListener("click", function () {
     document.getElementById("textb").innerHTML = "Working, Please Wait";
     setTimeout(function () {
